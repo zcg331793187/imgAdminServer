@@ -3,6 +3,16 @@
  */
 "use strict";
 class admin {
+    static getInstance() {
+        if (!admin.instance) {
+            admin.instance = new admin();
+        }
+        return admin.instance;
+    }
+    index(ctx, next) {
+        console.log('qweqweqwew');
+        ctx.body = 'admin/index';
+    }
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = admin;

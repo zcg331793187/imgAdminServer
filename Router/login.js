@@ -3,6 +3,15 @@
  */
 "use strict";
 class login {
+    static getInstance() {
+        if (!login.instance) {
+            login.instance = new login();
+        }
+        return login.instance;
+    }
+    index(ctx, next) {
+        ctx.body = 'login';
+    }
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = login;

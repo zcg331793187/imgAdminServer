@@ -8,5 +8,19 @@ export default class users{
 
 
 
+    private static instance: users;
 
+
+
+    public static getInstance() {
+        if (!users.instance) {
+            users.instance = new users();
+        }
+        return users.instance;
+    }
+
+    public index(ctx,next){
+
+        ctx.body = 'users';
+    }
 }

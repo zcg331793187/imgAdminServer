@@ -4,16 +4,28 @@
 import * as koa from 'koa';
 import * as koaRouter from 'koa-router';
 import * as logger from 'koa-logger';
-import  Router from './router/route';
+
+import  Router from './route';
 import * as log4 from 'log4js';
 import {log4Config} from './configs/log4';
 
 const app = new koa();
-const route = new Router();
 
+
+const bodyParser =  require('koa-body');
 log4.configure(log4Config);
 const log = log4.getLogger();
-let koaRoute = new koaRouter();
+const koaRoute = new koaRouter();
+
+
+
+
+
+
+
+
+app.use(logger());
+app.use(bodyParser());
 
 
 
@@ -21,37 +33,29 @@ let koaRoute = new koaRouter();
 app.use(koaRoute.routes());
 
 
-app.use(logger());
+
+
+koaRoute.use(async (ctx,next)=> {
 
 
 
+    ctx.set("Access-Control-Allow-Origin", "*");
+    ctx.set("Access-Control-Allow-Headers", "X-Requested-With");
+    ctx.set("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    ctx.set("Content-Type", "application/json;charset=utf-8");
+   await next();
 
-
-
-
-
-
-app.use(async (ctx, next) => {
-    let start:any = new Date();
-    await next();
-    let end:any = new Date();
-    let ms:number = end-start;
-    console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
-    log.info(`${ctx.method} ${ctx.url} - 运行用时：${ms}ms`);
+});
+app.on('error', function(err){
+    console.log('1232');
+    log.error('server error', err);
 });
 
 
 
+new Router(koaRoute);
 
 
-
-
-
-
-//路由
-
-koaRoute.get('/',route.index);
-koaRoute.post('/',route.index);
 
 
 
@@ -62,3 +66,4 @@ koaRoute.post('/',route.index);
 
 
 app.listen(3003);
+console.log('服务开启，端口号:'+3003);

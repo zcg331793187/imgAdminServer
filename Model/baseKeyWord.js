@@ -29,9 +29,15 @@ function add(data) {
     });
 }
 exports.add = add;
-function update(where, data) {
+function update(data, where) {
     return __awaiter(this, void 0, void 0, function* () {
         return yield db.BaseKeyWordDb.update(data, where);
     });
 }
 exports.update = update;
+function deleteData(where) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return yield db.BaseKeyWordDb.destroy(where);
+    });
+}
+exports.deleteData = deleteData;

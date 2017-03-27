@@ -13,25 +13,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const koa = require('koa');
 const koaRouter = require('koa-router');
 const logger = require('koa-logger');
-const route_1 = require('./router/route');
+const route_1 = require('./route');
 const log4 = require('log4js');
 const log4_1 = require('./configs/log4');
 const app = new koa();
-const route = new route_1.default();
+const bodyParser = require('koa-body');
 log4.configure(log4_1.log4Config);
 const log = log4.getLogger();
-let koaRoute = new koaRouter();
-app.use(koaRoute.routes());
+const koaRoute = new koaRouter();
 app.use(logger());
-app.use((ctx, next) => __awaiter(this, void 0, void 0, function* () {
-    let start = new Date();
+app.use(bodyParser());
+app.use(koaRoute.routes());
+koaRoute.use((ctx, next) => __awaiter(this, void 0, void 0, function* () {
+    ctx.set("Access-Control-Allow-Origin", "*");
+    ctx.set("Access-Control-Allow-Headers", "X-Requested-With");
+    ctx.set("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+    ctx.set("Content-Type", "application/json;charset=utf-8");
     yield next();
-    let end = new Date();
-    let ms = end - start;
-    console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
-    log.info(`${ctx.method} ${ctx.url} - 运行用时：${ms}ms`);
 }));
-//路由
-koaRoute.get('/', route.index);
-koaRoute.post('/', route.index);
+app.on('error', function (err) {
+    console.log('1232');
+    log.error('server error', err);
+});
+new route_1.default(koaRoute);
 app.listen(3003);
+console.log('服务开启，端口号:' + 3003);

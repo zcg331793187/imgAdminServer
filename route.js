@@ -10,15 +10,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments)).next());
     });
 };
+const routeConfigs_1 = require('./Configs/routeConfigs');
 class Router {
-    constructor() {
-    }
-    init(offset) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.log('init');
-            // await this.setTimeout(2);
-            // console.log('init10');
-            // return await    db.WeiboDb.find({'attributes': ['id', 'containerId', 'niceName'], 'limit': 1, offset: offset});
+    constructor(koaRoute) {
+        routeConfigs_1.config.map(route => {
+            koaRoute[route.method](route.url, route.fn);
         });
     }
     setTimeout(m) {
@@ -30,14 +26,11 @@ class Router {
             });
         });
     }
-    index(ctx, next) {
+    index(ctx) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield next();
-            ctx.body = ctx;
-        });
-    }
-    configs(ctx) {
-        return __awaiter(this, void 0, void 0, function* () {
+            // await next();
+            // ctx.body = ctx;
+            ctx.redirect('/'); //重定向
         });
     }
 }
