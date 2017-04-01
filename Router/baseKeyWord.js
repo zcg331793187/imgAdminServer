@@ -18,8 +18,10 @@ class baseKeyWord {
         }
         return baseKeyWord.instance;
     }
-    index(ctx, next) {
-        ctx.body = 'baseKeyWord';
+    static index(ctx, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            ctx.body = 'baseKeyWord';
+        });
     }
     /**
      * 获取
@@ -27,18 +29,18 @@ class baseKeyWord {
      * @param next
      * @returns {Promise<void>}
      */
-    getAll(ctx, next) {
+    static getAll(ctx, next) {
         return __awaiter(this, void 0, void 0, function* () {
             ctx.body = yield baseKeyWordModel.getAll();
         });
     }
-    getValidAll(ctx, next) {
+    static getValidAll(ctx, next) {
         return __awaiter(this, void 0, void 0, function* () {
             let where = {
                 where: {
                     isUse: 1,
                 },
-                attributes: ['id', 'keyName', 'tips']
+                attributes: ['keyName', 'tips']
             };
             yield next();
             ctx.body = yield baseKeyWordModel.getAll(where);
@@ -51,7 +53,7 @@ class baseKeyWord {
      * @param next
      * @returns {Promise<void>}
      */
-    addData(ctx, next) {
+    static addData(ctx, next) {
         return __awaiter(this, void 0, void 0, function* () {
             let postData = ctx.request.body;
             let addData = {
@@ -68,7 +70,7 @@ class baseKeyWord {
      * @param next
      * @returns {Promise<void>}
      */
-    upDate(ctx, next) {
+    static upDate(ctx, next) {
         return __awaiter(this, void 0, void 0, function* () {
             let postData = ctx.request.body;
             let where = { where: {
@@ -83,7 +85,7 @@ class baseKeyWord {
      * @param next
      * @returns {Promise<void>}
      */
-    deleteDate(ctx, next) {
+    static deleteDate(ctx, next) {
         return __awaiter(this, void 0, void 0, function* () {
             let postData = ctx.request.body;
             let where = { where: {

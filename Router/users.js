@@ -9,7 +9,7 @@ class users {
         }
         return users.instance;
     }
-    index(ctx, next) {
+    static index(ctx, next) {
         ctx.body = 'users';
     }
 }

@@ -2,6 +2,7 @@
  * Created by zhoucaiguang on 2017/3/24.
  */
 
+import * as imgModel from '../Model/img';
 
 
 export default class img{
@@ -16,8 +17,37 @@ export default class img{
         return img.instance;
     }
 
-    public index(ctx,next){
 
-        ctx.body = 'img';
+    public static index(ctx,next){
+
+
+        ctx.body = {};
+
     }
+
+
+    public static async getAll(ctx,next){
+
+
+        ctx.body =   await imgModel.getAll();
+
+    }
+
+    public static async getTitleIdImg(ctx,next){
+
+        let getData = ctx.request.body;
+
+
+        let wheres = {
+            where:{
+                titleId:getData.titleId
+            }
+        };
+
+
+
+        ctx.body =   await imgModel.getAll(wheres);
+    }
+
+
 }

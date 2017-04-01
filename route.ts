@@ -14,6 +14,7 @@ export  default class Router {
         config.map(route => {
 
 
+
             koaRoute[route.method](route.url, route.fn);
 
         });

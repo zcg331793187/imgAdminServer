@@ -9,7 +9,7 @@ class url {
         }
         return url.instance;
     }
-    index(ctx, next) {
+    static index(ctx, next) {
         ctx.body = 'url';
     }
 }

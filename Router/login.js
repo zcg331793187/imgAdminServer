@@ -9,7 +9,7 @@ class login {
         }
         return login.instance;
     }
-    index(ctx, next) {
+    static index(ctx, next) {
         ctx.body = 'login';
     }
 }

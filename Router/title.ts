@@ -1,6 +1,9 @@
 /**
  * Created by zhoucaiguang on 2017/3/24.
  */
+import * as titleModel from '../Model/title';
+import * as imgModel from '../Model/img';
+import {where} from "sequelize";
 
 
 
@@ -17,8 +20,44 @@ export default class title{
         return title.instance;
     }
 
-    public index(ctx,next){
+    public static index(ctx,next){
 
         ctx.body = 'title';
+    }
+
+
+    public static async getAllTitle(ctx,next){
+        let arg = ctx.params;
+        let offset = Number(arg['limit']);
+        if(!offset){
+            offset = 0;
+        }
+
+
+
+        let where ={
+            'attributes': ['id', 'title','imgThums','status','total'], 'limit': 18,
+            offset: offset,
+        };
+
+
+      ctx.body =   await titleModel.getAll(where);
+
+    }
+
+
+    public static async getTitleDetail(ctx,next){
+        let arg = ctx.params;
+        let titleId = Number(arg['id']);
+        let where = {
+            where:{titleId},
+            'attributes': ['id', 'url']
+        };
+
+
+
+
+        ctx.body =   await imgModel.getAll(where);
+
     }
 }

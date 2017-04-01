@@ -31,10 +31,6 @@ koaRoute.use((ctx, next) => __awaiter(this, void 0, void 0, function* () {
     ctx.set("Content-Type", "application/json;charset=utf-8");
     yield next();
 }));
-app.on('error', function (err) {
-    console.log('1232');
-    log.error('server error', err);
-});
 new route_1.default(koaRoute);
 app.listen(3003);
 console.log('服务开启，端口号:' + 3003);

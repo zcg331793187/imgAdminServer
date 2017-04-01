@@ -19,7 +19,7 @@ export default class users{
         return users.instance;
     }
 
-    public index(ctx,next){
+    public static index(ctx,next){
 
         ctx.body = 'users';
     }

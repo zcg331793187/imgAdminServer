@@ -46,10 +46,7 @@ koaRoute.use(async (ctx,next)=> {
    await next();
 
 });
-app.on('error', function(err){
-    console.log('1232');
-    log.error('server error', err);
-});
+
 
 
 

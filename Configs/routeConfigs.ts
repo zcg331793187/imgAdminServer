@@ -8,6 +8,7 @@ import baseKeyWord from '../Router/baseKeyWord';
 import img from '../Router/img';
 import login from '../Router/login';
 import title from '../Router/title';
+import  configs from '../Router/configs';
 import url from '../Router/url';
 import users from '../Router/users';
 interface IRouteConfigs {
@@ -17,60 +18,116 @@ interface IRouteConfigs {
     fn: any
 }
 
+enum Methods {post,get}
+
+
+
 export const config:IRouteConfigs[] =    [
     {
-        method: "get",
+        method: Methods[Methods.get],
         url: '/admin',
-        fn: admin.getInstance().index
+        fn: admin.index
     },
     {
-        method: "get",
-        url: '/baseKeyWord',
-        fn: baseKeyWord.getInstance().index
+        method: Methods[Methods.get],
+        url: '/baseKeyWord/getValidAll',
+        fn: baseKeyWord.getValidAll
     },
     {
-        method: "get",
+        method: Methods[Methods.get],
         url: '/img',
-        fn: img.getInstance().index
+        fn: img.index
     },
     {
-        method: "get",
+        method: Methods[Methods.get],
         url: '/title',
-        fn: title.getInstance().index
+        fn: title.index
     },
     {
-        method: "get",
+        method: Methods[Methods.get],
         url: '/login',
-        fn: login.getInstance().index
+        fn: login.index
     },
     {
-        method: "get",
+        method: Methods[Methods.get],
         url: '/users',
-        fn: users.getInstance().index
+        fn: users.index
     },
     {
-        method:'get',
+        method:Methods[Methods.get],
         url:'/baseKeyWord/getAll',
-        fn: baseKeyWord.getInstance().getAll
+        fn: baseKeyWord.getAll
     },
     {
-        method:'get',
+        method:Methods[Methods.get],
         url:'/baseKeyWord/getValidAll',
-        fn: baseKeyWord.getInstance().getValidAll
+        fn: baseKeyWord.getValidAll
     },
     {
-        method:'post',
+        method:Methods[Methods.post],
         url:'/baseKeyWord/addData',
-        fn: baseKeyWord.getInstance().addData
+        fn: baseKeyWord.addData
     },
     {
-        method:'post',
+        method:Methods[Methods.post],
         url:'/baseKeyWord/upDate',
-        fn: baseKeyWord.getInstance().upDate
+        fn: baseKeyWord.upDate
     },
     {
-        method:'post',
+        method:Methods[Methods.post],
         url:'/baseKeyWord/deleteDate',
-        fn: baseKeyWord.getInstance().deleteDate
+        fn: baseKeyWord.deleteDate
+    },
+    {
+        method:Methods[Methods.post],
+        url:'/baseKeyWord/deleteDate',
+        fn: baseKeyWord.deleteDate
+    },
+    {
+        method:Methods[Methods.post],
+        url:'/configs/addConfig',
+        fn: configs.addConfig
+    },
+    {
+        method:Methods[Methods.get],
+        url:'/configs/getValidAll',
+        fn: configs.getValidAll
+    },
+    {
+        method:Methods[Methods.post],
+        url:'/configs/settingIsUse',
+        fn: configs.settingIsUse
+    },
+    {
+        method:Methods[Methods.get],
+        url:'/configs/searchWebName/:webName',
+        fn: configs.searchWebName
+    },
+    {
+        method:Methods[Methods.get],
+        url:'/configs/configDetail/:id',
+        fn:configs.configDetail
+    },
+    {
+        method:Methods[Methods.post],
+        url:'/configs/updateConfig',
+        fn:configs.updateConfig
+    },
+    {
+        method:Methods[Methods.get],
+        url:'/configs/deleteConfig/:id',
+        fn:configs.deleteConfig
+    },
+    {
+        method: Methods[Methods.get],
+        url: '/titles/getAllTitle/:limit',
+        fn: title.getAllTitle
+    },
+    {
+        method: Methods[Methods.get],
+        url: '/titles/getTitleDetail/:id',
+        fn: title.getTitleDetail
     }
 ];
+
+

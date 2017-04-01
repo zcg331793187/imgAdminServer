@@ -15,7 +15,7 @@ export default class admin{
         return admin.instance;
     }
 
-    public index(ctx,next){
+    public static index(ctx,next){
 
         console.log('qweqweqwew');
         ctx.body = 'admin/index';

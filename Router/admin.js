@@ -9,7 +9,7 @@ class admin {
         }
         return admin.instance;
     }
-    index(ctx, next) {
+    static index(ctx, next) {
         console.log('qweqweqwew');
         ctx.body = 'admin/index';
     }

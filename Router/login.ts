@@ -17,7 +17,7 @@ export default class login{
         return login.instance;
     }
 
-    public index(ctx,next){
+    public static index(ctx,next){
 
         ctx.body = 'login';
     }

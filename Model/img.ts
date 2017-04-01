@@ -12,7 +12,11 @@ interface IImg {
 }
 
 
-export async function getAll(where:IImg) {
+
+
+
+
+export async function getAll(where?) {
 
     return await db.ImgDb.findAll(where);
 

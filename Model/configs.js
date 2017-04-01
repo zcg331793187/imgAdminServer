@@ -35,3 +35,9 @@ function update(where, data) {
     });
 }
 exports.update = update;
+function deleteData(where) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return yield db.Configs.destroy(where);
+    });
+}
+exports.deleteData = deleteData;

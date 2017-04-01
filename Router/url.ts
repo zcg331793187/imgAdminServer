@@ -16,7 +16,7 @@ export default class url{
         }
         return url.instance;
     }
-    public index(ctx,next){
+    public static index(ctx,next){
 
         ctx.body = 'url';
     }

@@ -7,61 +7,117 @@ const baseKeyWord_1 = require('../Router/baseKeyWord');
 const img_1 = require('../Router/img');
 const login_1 = require('../Router/login');
 const title_1 = require('../Router/title');
+const configs_1 = require('../Router/configs');
 const users_1 = require('../Router/users');
+var Methods;
+(function (Methods) {
+    Methods[Methods["post"] = 0] = "post";
+    Methods[Methods["get"] = 1] = "get";
+})(Methods || (Methods = {}));
 exports.config = [
     {
-        method: "get",
+        method: Methods[Methods.get],
         url: '/admin',
-        fn: admin_1.default.getInstance().index
+        fn: admin_1.default.index
     },
     {
-        method: "get",
-        url: '/baseKeyWord',
-        fn: baseKeyWord_1.default.getInstance().index
-    },
-    {
-        method: "get",
-        url: '/img',
-        fn: img_1.default.getInstance().index
-    },
-    {
-        method: "get",
-        url: '/title',
-        fn: title_1.default.getInstance().index
-    },
-    {
-        method: "get",
-        url: '/login',
-        fn: login_1.default.getInstance().index
-    },
-    {
-        method: "get",
-        url: '/users',
-        fn: users_1.default.getInstance().index
-    },
-    {
-        method: 'get',
-        url: '/baseKeyWord/getAll',
-        fn: baseKeyWord_1.default.getInstance().getAll
-    },
-    {
-        method: 'get',
+        method: Methods[Methods.get],
         url: '/baseKeyWord/getValidAll',
-        fn: baseKeyWord_1.default.getInstance().getValidAll
+        fn: baseKeyWord_1.default.getValidAll
     },
     {
-        method: 'post',
+        method: Methods[Methods.get],
+        url: '/img',
+        fn: img_1.default.index
+    },
+    {
+        method: Methods[Methods.get],
+        url: '/title',
+        fn: title_1.default.index
+    },
+    {
+        method: Methods[Methods.get],
+        url: '/login',
+        fn: login_1.default.index
+    },
+    {
+        method: Methods[Methods.get],
+        url: '/users',
+        fn: users_1.default.index
+    },
+    {
+        method: Methods[Methods.get],
+        url: '/baseKeyWord/getAll',
+        fn: baseKeyWord_1.default.getAll
+    },
+    {
+        method: Methods[Methods.get],
+        url: '/baseKeyWord/getValidAll',
+        fn: baseKeyWord_1.default.getValidAll
+    },
+    {
+        method: Methods[Methods.post],
         url: '/baseKeyWord/addData',
-        fn: baseKeyWord_1.default.getInstance().addData
+        fn: baseKeyWord_1.default.addData
     },
     {
-        method: 'post',
+        method: Methods[Methods.post],
         url: '/baseKeyWord/upDate',
-        fn: baseKeyWord_1.default.getInstance().upDate
+        fn: baseKeyWord_1.default.upDate
     },
     {
-        method: 'post',
+        method: Methods[Methods.post],
         url: '/baseKeyWord/deleteDate',
-        fn: baseKeyWord_1.default.getInstance().deleteDate
+        fn: baseKeyWord_1.default.deleteDate
+    },
+    {
+        method: Methods[Methods.post],
+        url: '/baseKeyWord/deleteDate',
+        fn: baseKeyWord_1.default.deleteDate
+    },
+    {
+        method: Methods[Methods.post],
+        url: '/configs/addConfig',
+        fn: configs_1.default.addConfig
+    },
+    {
+        method: Methods[Methods.get],
+        url: '/configs/getValidAll',
+        fn: configs_1.default.getValidAll
+    },
+    {
+        method: Methods[Methods.post],
+        url: '/configs/settingIsUse',
+        fn: configs_1.default.settingIsUse
+    },
+    {
+        method: Methods[Methods.get],
+        url: '/configs/searchWebName/:webName',
+        fn: configs_1.default.searchWebName
+    },
+    {
+        method: Methods[Methods.get],
+        url: '/configs/configDetail/:id',
+        fn: configs_1.default.configDetail
+    },
+    {
+        method: Methods[Methods.post],
+        url: '/configs/updateConfig',
+        fn: configs_1.default.updateConfig
+    },
+    {
+        method: Methods[Methods.get],
+        url: '/configs/deleteConfig/:id',
+        fn: configs_1.default.deleteConfig
+    },
+    {
+        method: Methods[Methods.get],
+        url: '/titles/getAllTitle/:limit',
+        fn: title_1.default.getAllTitle
+    },
+    {
+        method: Methods[Methods.get],
+        url: '/titles/getTitleDetail/:id',
+        fn: title_1.default.getTitleDetail
     }
 ];

@@ -13,7 +13,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const db = require('../db/SequelizeDb');
 function getAll(where) {
     return __awaiter(this, void 0, void 0, function* () {
-        return yield db.TitleDb.findAll(where);
+        return yield db.TitleDb.findAndCountAll(where);
     });
 }
 exports.getAll = getAll;

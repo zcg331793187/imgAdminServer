@@ -13,9 +13,9 @@ interface ITitle {
 }
 
 
-export async function getAll(where:ITitle) {
+export async function getAll(where) {
 
-    return await db.TitleDb.findAll(where);
+    return await db.TitleDb.findAndCountAll(where);
 
 }
 
@@ -35,6 +35,7 @@ export async function update(where,data:ITitle){
 
 
     return await db.TitleDb.update(data,where);
+
 
 
 

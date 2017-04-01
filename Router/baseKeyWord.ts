@@ -17,7 +17,7 @@ export default class baseKeyWord{
         return baseKeyWord.instance;
     }
 
-    public index(ctx,next){
+    public static async index(ctx,next){
 
         ctx.body = 'baseKeyWord';
     }
@@ -28,7 +28,7 @@ export default class baseKeyWord{
      * @param next
      * @returns {Promise<void>}
      */
-    public async getAll(ctx,next){
+    public static async getAll(ctx,next){
 
 
 
@@ -37,13 +37,13 @@ export default class baseKeyWord{
     }
 
 
-    public async getValidAll(ctx,next){
+    public static async getValidAll(ctx,next){
 
         let  where  ={
             where:{
                 isUse:1,
             },
-            attributes: ['id', 'keyName','tips']
+            attributes: ['keyName','tips']
         };
             await next();
         ctx.body =    await baseKeyWordModel.getAll(where);
@@ -56,7 +56,7 @@ export default class baseKeyWord{
      * @param next
      * @returns {Promise<void>}
      */
-    public async addData(ctx,next){
+    public static async addData(ctx,next){
 
         let postData = ctx.request.body;
         let addData = {
@@ -75,7 +75,7 @@ export default class baseKeyWord{
      * @param next
      * @returns {Promise<void>}
      */
-    public async upDate(ctx,next){
+    public static async upDate(ctx,next){
 
         let postData = ctx.request.body;
 
@@ -93,7 +93,7 @@ export default class baseKeyWord{
      * @param next
      * @returns {Promise<void>}
      */
-    public async deleteDate(ctx,next){
+    public static async deleteDate(ctx,next){
 
         let postData = ctx.request.body;
 
