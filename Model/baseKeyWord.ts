@@ -58,6 +58,4 @@ export async function deleteData(where){
 
     return await db.BaseKeyWordDb.destroy(where);
 
-
-
 }

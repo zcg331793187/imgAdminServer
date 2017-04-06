@@ -13,12 +13,8 @@ export default class title{
 
 
 
-    public static getInstance() {
-        if (!title.instance) {
-            title.instance = new title();
-        }
-        return title.instance;
-    }
+
+
 
     public static index(ctx,next){
 
@@ -58,6 +54,21 @@ export default class title{
 
 
         ctx.body =   await imgModel.getAll(where);
+
+    }
+
+    public static async searchTitle(ctx,next){
+        let arg = ctx.params;
+        let title = String(arg['title']);
+        let where = {
+            where: {title:{like:'%'+title+'%'}
+        },
+            'attributes': ['id', 'title','imgThums','status','total']
+        };
+
+
+
+        ctx.body =   await titleModel.getAll(where);
 
     }
 }

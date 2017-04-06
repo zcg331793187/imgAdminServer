@@ -13,12 +13,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const titleModel = require('../Model/title');
 const imgModel = require('../Model/img');
 class title {
-    static getInstance() {
-        if (!title.instance) {
-            title.instance = new title();
-        }
-        return title.instance;
-    }
     static index(ctx, next) {
         ctx.body = 'title';
     }
@@ -45,6 +39,18 @@ class title {
                 'attributes': ['id', 'url']
             };
             ctx.body = yield imgModel.getAll(where);
+        });
+    }
+    static searchTitle(ctx, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let arg = ctx.params;
+            let title = String(arg['title']);
+            let where = {
+                where: { title: { like: '%' + title + '%' }
+                },
+                'attributes': ['id', 'title', 'imgThums', 'status', 'total']
+            };
+            ctx.body = yield titleModel.getAll(where);
         });
     }
 }

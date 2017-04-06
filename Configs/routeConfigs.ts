@@ -29,6 +29,17 @@ export const config:IRouteConfigs[] =    [
         fn: admin.index
     },
     {
+        method: Methods[Methods.post],
+        url: '/admin/Login',
+        fn: admin.login
+    },
+    {
+        method: Methods[Methods.get],
+        url: '/admin/loginOut',
+        fn: admin.loginOut
+    },
+
+    {
         method: Methods[Methods.get],
         url: '/baseKeyWord/getValidAll',
         fn: baseKeyWord.getValidAll
@@ -127,7 +138,13 @@ export const config:IRouteConfigs[] =    [
         method: Methods[Methods.get],
         url: '/titles/getTitleDetail/:id',
         fn: title.getTitleDetail
+    },
+    {
+        method: Methods[Methods.get],
+        url: '/titles/searchTitle/:title',
+        fn: title.searchTitle
     }
 ];
+
 
 

@@ -93,7 +93,26 @@ const TitleDb = sequelize.define('title', {
 });
 
 
-
+const Admin =sequelize.define('admin', {
+    'userName': {
+        'type': Sequelize.STRING(255),
+        'allowNull': true,
+    },
+    'passWord': {
+        'type': Sequelize.INTEGER,
+        'allowNull': true//是否可以为空
+    },
+    'userPhoto': {
+        'type': Sequelize.STRING(255),
+        'allowNull': true
+    }
+}, {
+    // 自定义表名
+    'freezeTableName': true,
+    'tableName': 'node_admin',
+    // 是否需要增加createdAt、updatedAt、deletedAt字段
+    'timestamps': false,
+});
 
 const BaseKeyWordDb = sequelize.define('title', {
     'keyName': {
@@ -146,4 +165,4 @@ const Configs = sequelize.define('Configs', {
 
 
 
-export {TitleDb,ImgDb,WeiboDb,BaseKeyWordDb,Configs}
+export {TitleDb,ImgDb,WeiboDb,BaseKeyWordDb,Configs,Admin}

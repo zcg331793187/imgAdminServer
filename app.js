@@ -21,6 +21,8 @@ const bodyParser = require('koa-body');
 log4.configure(log4_1.log4Config);
 const log = log4.getLogger();
 const koaRoute = new koaRouter();
+const session = require('koa-session-minimal');
+app.use(session());
 app.use(logger());
 app.use(bodyParser());
 app.use(koaRoute.routes());

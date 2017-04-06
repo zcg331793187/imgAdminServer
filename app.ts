@@ -18,7 +18,9 @@ const log = log4.getLogger();
 const koaRoute = new koaRouter();
 
 
+const session = require('koa-session-minimal');
 
+app.use(session());
 
 
 
@@ -35,7 +37,9 @@ app.use(koaRoute.routes());
 
 
 
+
 koaRoute.use(async (ctx,next)=> {
+
 
 
 

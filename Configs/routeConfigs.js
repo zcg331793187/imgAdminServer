@@ -21,6 +21,16 @@ exports.config = [
         fn: admin_1.default.index
     },
     {
+        method: Methods[Methods.post],
+        url: '/admin/Login',
+        fn: admin_1.default.login
+    },
+    {
+        method: Methods[Methods.get],
+        url: '/admin/loginOut',
+        fn: admin_1.default.loginOut
+    },
+    {
         method: Methods[Methods.get],
         url: '/baseKeyWord/getValidAll',
         fn: baseKeyWord_1.default.getValidAll
@@ -119,5 +129,10 @@ exports.config = [
         method: Methods[Methods.get],
         url: '/titles/getTitleDetail/:id',
         fn: title_1.default.getTitleDetail
+    },
+    {
+        method: Methods[Methods.get],
+        url: '/titles/searchTitle/:title',
+        fn: title_1.default.searchTitle
     }
 ];
